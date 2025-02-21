@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import SearchBox from "./components/SearchBox";
+import FilteredList from "./components/FilteredList";
+import "./styles/App.scss";
 
-function App() {
+const App = () => {
+  
+  const [items] = useState(["Manzana", "Banana", "Naranja", "Uva", "Pera", "Mango"]);
+  const [searchText, setSearchText] = useState("");
+
+  
+  const handleSearchChange = (text) => {
+    setSearchText(text);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <h1>Lista Filtrada</h1>
+      <SearchBox onSearchChange={handleSearchChange} />
+      <FilteredList items={items} searchText={searchText} />
     </div>
   );
-}
+};
 
 export default App;
