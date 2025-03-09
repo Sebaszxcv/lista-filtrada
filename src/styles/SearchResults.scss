@@ -1,0 +1,39 @@
+.search-results {
+    text-align: center;
+  
+    ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+  
+    li {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+  
+    li:hover {
+      transform: scale(1.05);
+    }
+  
+    img {
+      max-width: 150px;
+      border-radius: 10px;
+    }
+  
+    h3 {
+      margin: 10px 0 5px;
+    }
+  
+    p {
+      color: gray;
+    }
+  }
+  

@@ -1,25 +1,26 @@
-import React, { useState } from "react";
-import SearchBox from "./components/SearchBox";
-import FilteredList from "./components/FilteredList";
-import "./styles/App.scss";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import SearchBar from '../src/components/SearchBar';  // Asegúrate de que este componente exista
+import SearchResults from '../src/components/SearchResults';  // Asegúrate de que este componente exista
+import SongDetail from '../src/components/SongDetail';  // Asegúrate de que este componente exista
 
-const App = () => {
-  
-  const [items] = useState(["Manzana", "Banana", "Naranja", "Uva", "Pera", "Mango"]);
-  const [searchText, setSearchText] = useState("");
-
-  
-  const handleSearchChange = (text) => {
-    setSearchText(text);
-  };
+function App() {
+  const [searchTerm, setSearchTerm] = useState('');
 
   return (
-    <div className="app-container">
-      <h1>Lista Filtrada</h1>
-      <SearchBox onSearchChange={handleSearchChange} />
-      <FilteredList items={items} searchText={searchText} />
-    </div>
+    <Router>
+      <div>
+        <SearchBar setSearchTerm={setSearchTerm} />
+        <Routes>
+          {/* Ruta para la página principal */}
+          <Route path="/" element={<SearchResults searchTerm={searchTerm} />} />
+
+          {/* Ruta para la página de detalles de la canción */}
+          <Route path="/song/:id" element={<SongDetail />} />
+        </Routes>
+      </div>
+    </Router>
   );
-};
+}
 
 export default App;
