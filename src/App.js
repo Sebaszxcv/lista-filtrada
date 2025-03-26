@@ -1,22 +1,21 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SearchBar from '../src/components/SearchBar';  // Asegúrate de que este componente exista
-import SearchResults from '../src/components/SearchResults';  // Asegúrate de que este componente exista
-import SongDetail from '../src/components/SongDetail';  // Asegúrate de que este componente exista
+import SearchBar from './components/SearchBar';
+import SearchResults from './components/SearchPage';
+import AlbumDetail from './components/AlbumDetail';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
 
   return (
     <Router>
-      <div>
+      <div className="app">
+        <h1>Buscador de Álbumes Musicales</h1>
         <SearchBar setSearchTerm={setSearchTerm} />
+        
         <Routes>
-          {/* Ruta para la página principal */}
-          <Route path="/" element={<SearchResults searchTerm={searchTerm} />} />
-
-          {/* Ruta para la página de detalles de la canción */}
-          <Route path="/song/:id" element={<SongDetail />} />
+          <Route path="/" element={<SearchResults key={searchTerm} searchTerm={searchTerm} />} />
+          <Route path="/song/:id" element={<AlbumDetail />} />
         </Routes>
       </div>
     </Router>
