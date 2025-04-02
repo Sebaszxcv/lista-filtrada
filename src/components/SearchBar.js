@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form, Input, Button } from '../styles/SearchBarStyles';
 
 function SearchBar({ setSearchTerm }) {
   const [input, setInput] = React.useState('');
@@ -14,8 +15,8 @@ function SearchBar({ setSearchTerm }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="search-form">
-      <input
+    <Form onSubmit={handleSubmit}>
+      <Input
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
@@ -24,13 +25,13 @@ function SearchBar({ setSearchTerm }) {
         required
         minLength={2}
       />
-      <button 
+      <Button 
         type="submit" 
         disabled={!input.trim() || input.trim() === lastSearched}
       >
         Buscar Álbumes
-      </button>
-    </form>
+      </Button>
+    </Form>
   );
 }
 
